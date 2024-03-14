@@ -1,0 +1,13 @@
+@{
+    ViewData["Title"] = "Choose amount";
+}
+
+<h2>Choose amount</h2>
+
+@using (Html.BeginForm("Index", "Home", FormMethod.Post))
+{
+    <label for="number">Amount of pizzas:</label>
+    <input type="number" id="number" name="number" min="1" required />
+    <span asp-validation-for="number" class="text-danger"></span>
+    <input type="submit" value="Submit" />
+}

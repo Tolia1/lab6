@@ -1,0 +1,15 @@
+@using lab6.Models;
+@{
+    ViewBag.Title = "Your order";
+    var order = (List<Product>)ViewData["Order"];
+}
+
+<h2>Your order</h2>
+
+@foreach (var product in order)
+{
+   <h3>@product.Name</h3>
+   <p>Total price: @(product.Amount * product.Price)</p>
+   <p>Amount: @product.Amount</p>
+   <hr>
+}

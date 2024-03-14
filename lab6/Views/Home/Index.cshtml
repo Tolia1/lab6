@@ -1,0 +1,32 @@
+@using lab6.Models;
+@{
+    ViewBag.Title = "Make order";
+    var numberOfForms = (int)ViewData["Number"];
+    var products = (List<Product>)ViewData["Products"];
+    int numberOfProducts = products.Count;
+}
+
+<h2>Make your order</h2>
+
+@using (Html.BeginForm("Final1", "Home", FormMethod.Post))
+{
+    <input type="hidden" name="num" value="@numberOfForms" />
+    @for (int i = 1; i <= numberOfForms; i++)
+    {
+        <div class="form-group">
+            <label for="productName">Product:</label>
+            <select id="productName" name="prodName">
+                @for (int j = 0; j < numberOfProducts; j++)
+                {
+                    <option value="@j">@products[j].Name $ @products[j].Price</option>
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="amount">Amount:</label>
+            <input type="number" id="amount" name="amount" min="1" required />
+        </div>
+        <hr>
+     }
+    <input type="submit" value="Submit" class="btn btn-primary" />
+}
